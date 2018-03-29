@@ -7,9 +7,9 @@
 local textSize = 50
 local backgroundImage = display.newImageRect("Images/fire.png", 1050, 1010)
 local pll= display.newImageRect("Images/pll.png", 200, 200)
-local casket = display.newImageRect("Images/casket.png", 300, 300)
-local redcoat = display.newImageRect("Images/triton.png", 200, 200)
-local asign = display.newImageRect("Images/asing.jpg", 400, 500)
+local redcoat = display.newImageRect("Images/triton.png", 600, 300)
+local asign = display.newImageRect("Images/asign.png", 200, 300)
+
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
@@ -17,30 +17,26 @@ display.setStatusBar(display.HiddenStatusBar)
 scrollSpeed = -2
 scrollSpeed2 = 3
 scrollSpeed3 = 4
-scrollSpeed4 = 3
 
 --set the position of the background image
-backgroundImage.x = 1028
-backgroundImage.y = 800
+backgroundImage.x = 500
+backgroundImage.y = 300
 
 --make pll transparent
 pll.alpha = 0
 
 --set the initial x and y position of pll
-pll.x = 800
-pll.y = display.contentHeight/3
+pll.x = 400
+pll.y = 700
 
---set the initial x and y position of casket
-casket.x = 100
-casket.y = display.contentHeight*2.5/3
 
 --set the initial x and y position of asign
-asign.x = 100
-asign.y = 10
+asign.x = 500
+asign.y = 100
 
---set the initial x and y position of asign
-asign.x = 100
-asign.y = 10
+--set the initial x and y position of red coat
+redcoat.x = 500
+redcoat.y = 600
 
 --Function: Moved pll
 --Input: this function accepts an event listener
@@ -56,60 +52,45 @@ local function Movedpll(event)
 -- MoveCasket will be called over and over again
 Runtime:addEventListener("enterFrame", Movedpll)
 
---Function: Movecasket
---Input: this function accepts an event listener
---Output: none
---Description: This function adds the scroll speed to the x-value of casket
-local function Movecasket(event)
-	  --add the scroll speed to the x-value of casket
-	  casket.x = casket.x + scrollSpeed2 
-	  -- change the transparency of the casket every time it moves so that it fades out
-	  casket.alpha = casket.alpha - 0.0005
-	  --make casket smaller as it moves
-	  casket:scale(1 - 0.003, 1 - 0.003)
-	end
-
--- Movecasket will be called over and over again
-Runtime:addEventListener("enterFrame", MoveCasket)
-
-
 --Function: MoveAsign
 --Input: this function accepts an event listener
 --Output: none
 --Description: This function adds the scroll speed to the x-value of the casket
 local function MoveAsign(event)
 	  --add the scroll speed to the x-value of the casket
-	  MoveAsign.x = Asign.x + scrollSpeed3
-	  MoveAsign.y = Asign.y + scrollSpeed3
-	  -- make the asign spin as it moves
-	  casket:rotate(5)
+	 asign.x = asign.x + scrollSpeed2
+-- change the transpanrency of asign everytime it oves so it fades out
+	   asign.alpha = asign.alpha - 0.0005
+	  --make asign smaller as it moves
+	  asign:scale(1 - 0.003, 1 - 0.003)
 	end
 
 -- MoveAsign will be called over and over again
 Runtime:addEventListener("enterFrame", MoveAsign) 
 
---Function: Moveredcoat
+--Function: redcoat
 --Input: this function accepts an event listener
 --Output: none
 --Description: This function adds the scroll speed to the x-value of the redcoat
 local function MoveRedcoat(event)
 	  --add the scroll speed to the x-value of the redcoat
-	  MoveRedcoat.x = Redcoat.x + scrollSpeed3
-	  MoveRedcoat.y = Redcoat.y + scrollSpeed3
+	  Redcoat.x = Redcoat.x + scrollSpeed3
+	  Redcoat.y = Redcoat.y + scrollSpeed3
 	  -- make the redcoat spin as it moves
-	  casket:rotate(5)
+	  redcoat:rotate(5)
 	end
+
 -- Movecasket will be called over and over again
 Runtime:addEventListener("enterFrame", MoveRedcoat)
 
 --Display phrase on the screen
-areaText = display.newText("Gotta a secret can you keep it ?", 0, 0, Arial, textSize)
+areaText = display.newText("GOTTA SECRET, CAN YOU KEEP IT ?", 0, 0, Arial, textSize)
 areaText.x = 475
-areaText.y = 400
+areaText.y = 300
 areaText:rotate(-20)
 
 --set the text color
-areaText:setTextColor(1, 0, 1)
+areaText:setTextColor(200, 150, 175)
 
 -- setting sound variables 
 local Music = a
