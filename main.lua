@@ -3,15 +3,32 @@
 -- Course: ICS2O/3C
 -- This program displays animated images
 --------------------------------------------------------------------------------
+-- hide the status bar
+display.setStatusBar(display.HiddenStatusBar)
+
+---------------------------------------------------------------------
+-- SOUNDS
+---------------------------------------------------------------------
+
+
+-- setting sound variables 
+local Music = audio.loadSound("Sounds/pllthemesong")
+local BackgroundMusic
+
+
+-- setting background music 
+BackgroundMusic = audio.play(Music)
+
+---------------------------------------------------------------------
+-- LOCAL VARIABLES
+---------------------------------------------------------------------
+
 ---- creating local variables
 local textSize = 50
 local backgroundImage = display.newImageRect("Images/fire.png", 1050, 1010)
-local pll= display.newImageRect("Images/pll.png", 200, 200)
+local pll= display.newImageRect("Images/pll.png", 500, 400)
 local redcoat = display.newImageRect("Images/triton.png", 600, 300)
 local asign = display.newImageRect("Images/asign.png", 200, 300)
-
--- hide the status bar
-display.setStatusBar(display.HiddenStatusBar)
 
 --global variables
 scrollSpeed = -2
@@ -26,8 +43,8 @@ backgroundImage.y = 300
 pll.alpha = 0
 
 --set the initial x and y position of pll
-pll.x = 400
-pll.y = 700
+pll.x = 500
+pll.y = display.contentHeight/2
 
 
 --set the initial x and y position of asign
@@ -37,6 +54,20 @@ asign.y = 100
 --set the initial x and y position of red coat
 redcoat.x = 500
 redcoat.y = 600
+
+--Display phrase on the screen
+areaText = display.newText("GOTTA SECRET, CAN YOU KEEP IT ?", 0, 0, Arial, textSize)
+areaText.x = 475
+areaText.y = 300
+areaText:rotate(-20)
+
+--set the text color
+areaText:setTextColor(200, 150, 175)
+
+---------------------------------------------------------------------
+-- LOCAL FUNCTIONS
+---------------------------------------------------------------------
+
 
 --Function: Moved pll
 --Input: this function accepts an event listener
@@ -73,29 +104,17 @@ Runtime:addEventListener("enterFrame", MoveAsign)
 --Output: none
 --Description: This function adds the scroll speed to the x-value of the redcoat
 local function MoveRedcoat(event)
-	  --add the scroll speed to the x-value of the redcoat
-	  Redcoat.x = Redcoat.x + scrollSpeed3
-	  Redcoat.y = Redcoat.y + scrollSpeed3
-	  -- make the redcoat spin as it moves
-	  redcoat:rotate(5)
-	end
+	--add the scroll speed to the x-value of the redcoat
+	redcoat.x = redcoat.x + scrollSpeed3
+	redcoat.y = redcoat.y + scrollSpeed3
+	-- make the redcoat spin as it moves
+	redcoat:rotate(5)
+end
 
 -- Movecasket will be called over and over again
 Runtime:addEventListener("enterFrame", MoveRedcoat)
 
---Display phrase on the screen
-areaText = display.newText("GOTTA SECRET, CAN YOU KEEP IT ?", 0, 0, Arial, textSize)
-areaText.x = 475
-areaText.y = 300
-areaText:rotate(-20)
 
---set the text color
-areaText:setTextColor(200, 150, 175)
 
--- setting sound variables 
-local Music = a
-local BackgroundMusic
-
--- setting background music 
-BackgroundMusic = audio.play(Music)
 -----------------------------------------------------------------------------------------
+
